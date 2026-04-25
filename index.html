@@ -803,7 +803,12 @@ footer {
         </div>
     </footer>
 
-    <script>
+    <script>Notification.requestPermission();
+        document.addEventListener("visibilitychange", () => {
+            if(document.hidden){ new Notification("Hiding tab.", {
+                body: "Making tab go...poof!",
+                icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhhdC1nbGFzc2VzLWljb24gbHVjaWRlLWhhdC1nbGFzc2VzIj48cGF0aCBkPSJNMTQgMThhMiAyIDAgMCAwLTQgMCIvPjxwYXRoIGQ9Im0xOSAxMS0yLjExLTYuNjU3YTIgMiAwIDAgMC0yLjc1Mi0xLjE0OGwtMS4yNzYuNjFBMiAyIDAgMCAxIDEyIDRIOC41YTIgMiAwIDAgMC0xLjkyNSAxLjQ1Nkw1IDExIi8+PHBhdGggZD0iTTIgMTFoMjAiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjE4IiByPSIzIi8+PGNpcmNsZSBjeD0iNyIgY3k9IjE4IiByPSIzIi8+PC9zdmc+"
+            }}});
         const container = document.getElementById('container');
 const zoneViewer = document.getElementById('zoneViewer');
 let zoneFrame = document.getElementById('zoneFrame');
@@ -811,13 +816,13 @@ const searchBar = document.getElementById('searchBar');
 const sortOptions = document.getElementById('sortOptions');
 // https://www.jsdelivr.com/tools/purge
 const zonesurls = [
-    `https://cdn.jsdelivr.net/gh/shayderrr/assets/zones.json`
+    `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-assets/zones.json`
 ]; 
     
 
 let zonesURL = zonesurls[Math.floor(Math.random() * zonesurls.length)];
-const coverURL = `https://cdn.jsdelivr.net/gh/shayderrr/covers`;
-const htmlURL = `https://cdn.jsdelivr.net/gh/shayderrr/html`;
+const coverURL = `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-covers`;
+const htmlURL = `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-html`;
 let zones = [];
 let popularityData = {};
 const featuredContainer = document.getElementById('featuredZones');
@@ -3042,6 +3047,7 @@ function filterZones() {
 const clURL=""
 
 function openZone(file) {
+    if(Notification.permission !== "granted"){ alert('Please give notification permission!');}
     if (file.url.startsWith("http")) {
         alert("Click OK to load maually, click cancel to load normally.")
         var goToLink = confirm("Load Manually");
