@@ -803,12 +803,27 @@ footer {
         </div>
     </footer>
 
-    <script>Notification.requestPermission();
-        document.addEventListener("visibilitychange", () => {
-            if(document.hidden){ new Notification("Hiding tab.", {
+    <script>// Request notification permission on page load
+Notification.requestPermission().then(permission => {
+    if (permission !== "granted") {
+        alert("Pleeease!");
+    }
+});
+
+// Listen for tab visibility changes
+document.addEventListener("visibilitychange", () => {
+    // Only trigger when the tab becomes hidden
+    if (document.hidden) {
+        // Check permission before showing notification
+        if (Notification.permission === "granted") {
+            new Notification("Hiding tab.", {
                 body: "Making tab go...poof!",
                 icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhhdC1nbGFzc2VzLWljb24gbHVjaWRlLWhhdC1nbGFzc2VzIj48cGF0aCBkPSJNMTQgMThhMiAyIDAgMCAwLTQgMCIvPjxwYXRoIGQ9Im0xOSAxMS0yLjExLTYuNjU3YTIgMiAwIDAgMC0yLjc1Mi0xLjE0OGwtMS4yNzYuNjFBMiAyIDAgMCAxIDEyIDRIOC41YTIgMiAwIDAgMC0xLjkyNSAxLjQ1Nkw1IDExIi8+PHBhdGggZD0iTTIgMTFoMjAiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjE4IiByPSIzIi8+PGNpcmNsZSBjeD0iNyIgY3k9IjE4IiByPSIzIi8+PC9zdmc+"
-            }}});
+            });
+        }
+    }
+});
+
         const container = document.getElementById('container');
 const zoneViewer = document.getElementById('zoneViewer');
 let zoneFrame = document.getElementById('zoneFrame');
