@@ -3127,6 +3127,23 @@ if (goToLink) {
 }
 
 function aboutBlank() {
+    if (file.url.startsWith('cl'){
+               function normalizeFileName(name) {
+                                if (name.includes('.') && name.lastIndexOf('.') > 0) return name;
+                                return name + '.html';
+                            }
+
+                            const normalized = normalizeFileName(file.url);
+                            const encoded = encodeURIComponent(normalized);
+
+                            fetch(`https://cdn.jsdelivr.net/gh/bu${"b"}bls/ugs-singlefile/UGS-Files/${encoded}?t=${Date.now()}`)
+                                .then(response => response.text())
+                                .then(text => {
+                                    const newWin =window.open("about:blank","_blank");
+                                    if (newWin) {newWin.document.open();newWin.document.write(text);newWin.document.close();}
+        });
+    }
+    else{
     const newWindow = window.open("about:blank", "_blank");
     let zone = zones.find(zone => zone.id + '' === document.getElementById('zoneId').textContent).url.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
     fetch(zone+"?t="+Date.now()).then(response => response.text()).then(html => {
@@ -3137,7 +3154,7 @@ function aboutBlank() {
         }
     })
 }
-
+}
 function closeZone() {
     zoneViewer.style.display = "none";
     zoneViewer.removeChild(zoneFrame);
