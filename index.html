@@ -25,7 +25,7 @@
         gtag('config', 'G-WX5VS54ZDW');
     </script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-5521219086088837?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
-    <script src="https://cdn.jsdelivr.net/gh/af.github.io@main/gnmath.js"></script>
+    <script src="https://esm.sh/gh/af.github.io@main/gnmath.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NPR Gaming Home</title>
@@ -831,13 +831,13 @@ const searchBar = document.getElementById('searchBar');
 const sortOptions = document.getElementById('sortOptions');
 // https://www.jsdelivr.com/tools/purge
 const zonesurls = [
-    `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-assets/zones.json`
+    `https://esm.sh/gh/nprgaming/gn-math-assets/zones.json`
 ]; 
     
 
 let zonesURL = zonesurls[Math.floor(Math.random() * zonesurls.length)];
-const coverURL = `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-covers`;
-const htmlURL = `https://cdn.jsdelivr.net/gh/nprgaming/gn-math-html`;
+const coverURL = `https://esm.sh/gh/nprgaming/gn-math-covers`;
+const htmlURL = `https://esm.sh/gh/nprgaming/gn-math-html`;
 let zones = [];
 let popularityData = {};
 const featuredContainer = document.getElementById('featuredZones');
@@ -855,7 +855,7 @@ async function listZones() {
             shajson = await sharesponse.json();
             sha = shajson[0]['sha'];
             if (sha) {
-                zonesURL = `https://cdn.jsdelivr.net/gh/assets@${sha}/zones.json`;
+                zonesURL = `https://esm.sh/gh/assets@${sha}/zones.json`;
             }
           } catch (error) {
             try {
@@ -863,7 +863,7 @@ async function listZones() {
                 if (secondarysharesponse && secondarysharesponse.status === 200) {
                     sha = (await secondarysharesponse.text()).trim();
                     if (sha) {
-                        zonesURL = `https://cdn.jsdelivr.net/gh/assets@${sha}/zones.json`;
+                        zonesURL = `https://esm.sh/gh/assets@${sha}/zones.json`;
                     }
                 }
             } catch(error) {}
@@ -3079,7 +3079,7 @@ if (goToLink) {
                             const normalized = normalizeFileName(file.url);
                             const encoded = encodeURIComponent(normalized);
 
-                            fetch(`https://cdn.jsdelivr.net/gh/bu${"b"}bls/ugs-singlefile/UGS-Files/${encoded}?t=${Date.now()}`)
+                            fetch(`https://esm.sh/gh/bu${"b"}bls/ugs-singlefile/UGS-Files/${encoded}?t=${Date.now()}`)
                                 .then(response => response.text())
                                 .then(text => {
                                     if (zoneFrame.contentDocument === null) {
@@ -3136,7 +3136,7 @@ function aboutBlank() {
                             const normalized = normalizeFileName(file.url);
                             const encoded = encodeURIComponent(normalized);
 
-                            fetch(`https://cdn.jsdelivr.net/gh/bu${"b"}bls/ugs-singlefile/UGS-Files/${encoded}?t=${Date.now()}`)
+                            fetch(`https://esm.sh/gh/bu${"b"}bls/ugs-singlefile/UGS-Files/${encoded}?t=${Date.now()}`)
                                 .then(response => response.text())
                                 .then(text => {
                                     const newWin =window.open("about:blank","_blank");
