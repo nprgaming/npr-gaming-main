@@ -3062,7 +3062,7 @@ function filterZones() {
 const clURL=""
 
 function openZone(file) {
-    if(Notification.permission !== "granted"){ alert('Please give notification permission!');}
+    //if(Notification.permission !== "granted"){ alert('Please give notification permission!');}
     if (file.url.startsWith("http")) {
         alert("Click OK to load maually, click cancel to load normally.")
         var goToLink = confirm("Load Manually");
